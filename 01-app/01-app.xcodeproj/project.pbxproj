@@ -13,6 +13,7 @@
 		835F0B062BF2AE490061AE9F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 835F0B052BF2AE490061AE9F /* Preview Assets.xcassets */; };
 		835F0B272BF3FAA10061AE9F /* Format.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835F0B262BF3FAA10061AE9F /* Format.swift */; };
 		836B07EF2BF53ED80068A0D3 /* CustomDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836B07EE2BF53ED80068A0D3 /* CustomDialog.swift */; };
+		83D7EF722BF55C4F00588C12 /* FormatCurrency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D7EF712BF55C4F00588C12 /* FormatCurrency.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,7 @@
 		835F0B052BF2AE490061AE9F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		835F0B262BF3FAA10061AE9F /* Format.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Format.swift; sourceTree = "<group>"; };
 		836B07EE2BF53ED80068A0D3 /* CustomDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDialog.swift; sourceTree = "<group>"; };
+		83D7EF712BF55C4F00588C12 /* FormatCurrency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatCurrency.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 			children = (
 				835F0AFE2BF2AE480061AE9F /* _1_appApp.swift */,
 				835F0B002BF2AE480061AE9F /* ContentView.swift */,
+				83D7EF712BF55C4F00588C12 /* FormatCurrency.swift */,
 				835F0B262BF3FAA10061AE9F /* Format.swift */,
 				836B07EE2BF53ED80068A0D3 /* CustomDialog.swift */,
 				835F0B022BF2AE490061AE9F /* Assets.xcassets */,
@@ -143,6 +146,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83D7EF722BF55C4F00588C12 /* FormatCurrency.swift in Sources */,
 				836B07EF2BF53ED80068A0D3 /* CustomDialog.swift in Sources */,
 				835F0B012BF2AE480061AE9F /* ContentView.swift in Sources */,
 				835F0AFF2BF2AE480061AE9F /* _1_appApp.swift in Sources */,

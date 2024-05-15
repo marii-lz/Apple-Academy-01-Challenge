@@ -16,6 +16,18 @@ struct ContentView: View {
     
     @State var isActive: Bool = false
     
+    @ObservedObject private var currencyManagerBR =  CurrencyManager(
+        amount: 0,
+        maximum: 999_999.99,
+        locale: .init(identifier: "pt_BR")
+    )
+    
+    @ObservedObject private var currencyManagerBR2 =  CurrencyManager(
+        amount: 0,
+        maximum: 999_999.99,
+        locale: .init(identifier: "pt_BR")
+    )
+    
     var body: some View {
         ZStack {
             ZStack(alignment: .top) {
@@ -44,17 +56,10 @@ struct ContentView: View {
                         
                         ZStack(alignment: .leading) {
                             Image(ImageResource.retanguloCaixa)
-                            if let caixa {
-                                Text("R$"+String(format: " %.2f",caixa))
+                            Text(currencyManagerBR.string)
                                     .foregroundColor(.verdeEscuro)
                                     .font(.system(size: 24))
                                     .padding(.leading, 28)
-                            } else {
-                                Text("R$ 0,00")
-                                    .foregroundColor(.verdeEscuro)
-                                    .font(.system(size: 24))
-                                    .padding(.leading, 28)
-                            } //como colocar vírgula no textfield
                             
                         }.offset(y: -50)
                     }
@@ -69,11 +74,9 @@ struct ContentView: View {
                             .bold()
                         
                         HStack(alignment: .center) {
-                            TextField (
-                                "R$",
-                                value: $caixa,
-                                format: .number
-                            )
+                            TextField(currencyManagerBR.string, text: $currencyManagerBR.string)
+                                .keyboardType(.numberPad)
+                                .onChange(of: currencyManagerBR.string, perform: currencyManagerBR.valueChanged)
                             
                             .padding(.vertical, 12)
                             .padding(.leading, 12)
@@ -112,11 +115,10 @@ struct ContentView: View {
                             .bold()
                         
                         HStack(alignment: .center) {
-                            TextField (
-                                "R$",
-                                value: $preco,
-                                format: .number
-                            )
+                            TextField(currencyManagerBR2.string, text: $currencyManagerBR2.string)
+                                .keyboardType(.numberPad)
+                                .onChange(of: currencyManagerBR2.string, perform: currencyManagerBR2.valueChanged)
+                            
                             .padding(.vertical, 12)
                             .padding(.leading, 12)
                             .background(Color.verdeBranco)
