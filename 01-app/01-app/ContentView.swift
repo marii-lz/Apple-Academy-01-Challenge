@@ -12,9 +12,10 @@ struct ContentView: View {
     @State var caixa: Double? = nil
     @State var preco: Double? = nil
     
-    @State private var showingSheet = false
+  //  @State private var showingSheet = false
     
     @State var isActive: Bool = false
+    @State var isActive2: Bool = false
     
     @ObservedObject private var currencyManagerBR =  CurrencyManager(
         amount: 0,
@@ -131,6 +132,9 @@ struct ContentView: View {
                         .padding(.leading, 72.0)
                             
                             Image(ImageResource.infoBt)
+                                .onTapGesture {
+                                    isActive2 = true
+                                }
                                 .padding(.trailing, 48.0)
                         }
                         
@@ -148,6 +152,8 @@ struct ContentView: View {
                 }
             }
             CustomDialog(isActive: $isActive, title: "Quanto você vai guardar no porquinho?", message: "Para usar esse aplicativo, é preciso calcular previamente o valor que você tem disponível para gastar, no momento.",message2: "Então lembre-se de descontar os gastos fixos (água, luz, impostos, etc.), qualquer possível dívida (esperamos que nenhuma) e separe aquela parte investir (sugerimos pelo menos 25%) da sua renda. Daí agora sim, tá na hora de usar o app.")
+            
+            CustomDialogCusto(isActive2: $isActive2, title: "Já procurou o melhor preço né?", message: "Antes de inserir o preço do produto que você deseja comprar, recomendamos fazer uma pesquisa antes, para garantir que está no melhor preço disponível.",message2: "Confira se existem opções mais em conta ou se há algum desconto. Depois disso, é só digitar o valor aqui.")
         }
     }
     

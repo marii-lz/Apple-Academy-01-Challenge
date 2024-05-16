@@ -1,25 +1,25 @@
 //
-//  CustomDialog.swift
+//  CustomDialogCusto.swift
 //  01-app
 //
-//  Created by Marília Luz dos Santos on 15/05/24.
+//  Created by Marília Luz dos Santos on 16/05/24.
 //
 
 import SwiftUI
 
-struct CustomDialog: View {
+struct CustomDialogCusto: View {
     
-    @Binding var isActive: Bool
+    @Binding var isActive2: Bool
     
     let title: String
     let message: String
     let message2: String
 
-    @State private var offset: CGFloat = 1000
+    @State private var offset2: CGFloat = 1000
     
     var body: some View {
         
-        if isActive {
+        if isActive2 {
             ZStack {
                 Color(.black)
                     .opacity(0.5)
@@ -35,8 +35,8 @@ struct CustomDialog: View {
                         .multilineTextAlignment(.center)
                         .font(.system(size: 20))
                         .bold()
-                        .padding(.leading, 32.0)
-                        .padding(.trailing, 32.0)
+                        .padding(.leading, 48.0)
+                        .padding(.trailing, 48.0)
                         .padding(.top, 24)
                         .padding(.bottom, 20)
                         .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
@@ -87,10 +87,10 @@ struct CustomDialog: View {
                 }
                 .shadow(radius: 20)
                 .padding(40)
-                .offset(x: 0, y: offset)
+                .offset(x: 0, y: offset2)
                 .onAppear{
                     withAnimation(.default) {
-                        offset = 0
+                        offset2 = 0
                     }
                 }
             }
@@ -103,13 +103,15 @@ struct CustomDialog: View {
     
     func close() {
        // withAnimation(.default) {
-            offset = 1000
-            isActive = false
+            offset2 = 1000
+            isActive2 = false
       //  }
     }
         
 }
 
 #Preview {
-    CustomDialog(isActive: .constant(true), title: "Quanto você vai guardar no porquinho?", message: "Para usar esse aplicativo, é preciso calcular previamente o valor que você tem disponível para gastar, no momento.",message2: "Então lembre-se de descontar os gastos fixos (água, luz, impostos, etc.), qualquer possível dívida (esperamos que nenhuma) e separe aquela parte investir (sugerimos pelo menos 25%) da sua renda. Daí agora sim, tá na hora de usar o app.")
+    CustomDialogCusto(isActive2: .constant(true), title: "Já procurou o melhor preço né?", message: "Antes de inserir o preço do produto que você deseja comprar, recomendamos fazer uma pesquisa antes, para garantir que está no melhor preço disponível.",message2: "Confira se existem opções mais em conta ou se há algum desconto. Depois disso, é só digitar o valor aqui.")
 }
+
+ 
