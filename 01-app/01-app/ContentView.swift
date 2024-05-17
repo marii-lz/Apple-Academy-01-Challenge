@@ -19,6 +19,8 @@ struct ContentView: View {
     @State var isActive: Bool = false
     @State var isActive2: Bool = false
     
+    @State var colors: [Color] = [.black, .gray, .gray, .gray, .gray, .gray]
+    
     @ObservedObject private var currencyManagerBR =  CurrencyManager(
         amount: 0,
         maximum: 999_999.99,
@@ -154,11 +156,22 @@ struct ContentView: View {
                             Spacer()
                         }
                     case 1:
-                        Pergunta1(apertou: $screen)
-                //    case 2:
-                      //  Pergunta2()
-                //    case 3:
-                     //   Pergunta3()
+                        Pergunta1(apertou: $screen, colors: $colors)
+                    case 2:
+                        Pergunta2(apertou: $screen, colors: $colors)
+                        
+                    case 3:
+                        Pergunta3(apertou: $screen, colors: $colors)
+                        
+                    case 4:
+                        Pergunta4(apertou: $screen, colors: $colors)
+                        
+                    case 5:
+                        Pergunta5(apertou: $screen, colors: $colors)
+                        
+                    case 6:
+                        Result(apertou: $screen)
+                        
                     default:
                         Text("teste")
                     }

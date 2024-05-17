@@ -1,23 +1,24 @@
 //
-//  Pergunta3.swift
+//  Pergunta5.swift
 //  01-app
 //
-//  Created by Marília Luz dos Santos on 16/05/24.
+//  Created by Marília Luz dos Santos on 17/05/24.
 //
 
 import SwiftUI
 
-struct Pergunta3 : View {
+struct Pergunta5 : View {
     @Binding var apertou: Int
-    @State var botaoSim3 = false
-    @State var botaoNao3 = false
+    @State var botaoDias = false
+    @State var botaoMeses = false
+    @State var botaoAnos = false
     
     @Binding var colors: [Color]
     
     var body: some View {
         
         VStack {
-            Text("Esse produto resolve uma necessidade minha?")
+            Text("Quanto tempo esse produto vai durar?")
                 .multilineTextAlignment(.center)
                 .foregroundStyle(.verdeEscuro)
                 .font(.system(size: 22))
@@ -26,46 +27,61 @@ struct Pergunta3 : View {
                 .padding(.trailing, 32.0)
                 .padding(.bottom, 20.0)
                 .padding(.top, 72)
-            
+
             HStack {
                 
-                Button (action: {botaoSim3 = !botaoSim3
-                    if apertou <= 5 {
-                        colors[apertou-1] = .gray
-                        colors[apertou] = .black
-                        apertou += 1
-                    }
-                })
-                {
+                Button (action: {
+                    botaoDias = !botaoDias
+                    apertou += 1
+                }, label: {
                     
                     HStack{
-                        if botaoSim3 {
-                            Image(ImageResource.simBtVerde)
+                        if botaoDias {
+                            Image(ImageResource.diasBtVerde)
                             
                         } else {
-                            Image(ImageResource.simBt)
+                            Image(ImageResource.diasBt)
                         }
                     }
-                }
+                })
                 
                 Button (action: {
-                    botaoNao3 = !botaoNao3
+                    botaoMeses = !botaoMeses
+                    
                     if apertou <= 5 {
                         colors[apertou-1] = .gray
                         colors[apertou] = .black
                         apertou += 1
                     }
-                    
                 }) {
                     
                     HStack{
-                        if botaoNao3 {
-                            Image(ImageResource.naoBtVerde)
+                        if botaoMeses {
+                            Image(ImageResource.mesesBtVerde)
                         } else {
-                            Image(ImageResource.naoBt)
+                            Image(ImageResource.mesesBt)
                         }
                     }
-                }.padding(.leading, 12)
+                }.padding(.leading, 8)
+                
+                Button (action: {
+                    botaoAnos = !botaoAnos
+                    if apertou <= 5 {
+                        colors[apertou-1] = .gray
+                        colors[apertou] = .black
+                        apertou += 1
+                    }
+                }, label: {
+                    
+                    HStack{
+                        if botaoAnos {
+                            Image(ImageResource.anosBtVerde)
+                            
+                        } else {
+                            Image(ImageResource.anosBt)
+                        }
+                    }
+                }).padding(.leading, 8)
             }
             
             Spacer()
@@ -89,15 +105,15 @@ struct Pergunta3 : View {
                 .padding(.bottom, 48)
             
             //Image(ImageResource.pageControl1)
-            //  .padding(.bottom, 48)
+              //  .padding(.bottom, 48)
             
         }.ignoresSafeArea()
-        //.frame(width: 345, height: 562)
+            //.frame(width: 345, height: 562)
+            
         
     }
 }
 #Preview {
-    Pergunta3(apertou: .constant(1), colors: .constant([.black, .gray, .gray, .gray, .gray]))
+    Pergunta5(apertou: .constant(1), colors: .constant([.black, .gray, .gray, .gray, .gray]))
 }
-
 
