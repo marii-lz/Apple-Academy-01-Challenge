@@ -13,6 +13,8 @@ struct Result : View {
     @State var aprovar = false
     @State var refazer = false
     
+    @Binding var isActive3: Bool
+    
     var body: some View {
         
         VStack {
@@ -42,7 +44,9 @@ struct Result : View {
 
             HStack {
                 
-                Button (action: {}, label: {
+                Button (action: {
+                    apertou = 0
+                }, label: {
                     HStack{
                         if refazer {
                             Image(ImageResource.refazerBtVerde)
@@ -52,7 +56,9 @@ struct Result : View {
                     }
                 })
                 
-                Button (action: {}, label: {
+                Button (action: {
+                    isActive3 = true
+                }, label: {
                     HStack{
                         if aprovar {
                             Image(ImageResource.aprovarVerde)
@@ -75,5 +81,5 @@ struct Result : View {
     }
 }
 #Preview {
-    Result(apertou: .constant(1))
+    Result(apertou: .constant(1), isActive3: .constant(true))
 }

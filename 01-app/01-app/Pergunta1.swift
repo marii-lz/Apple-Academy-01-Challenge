@@ -76,19 +76,6 @@ struct Pergunta1 : View {
             PageControl(apertou: $apertou, colors: $colors)
                 .padding(.bottom, 48)
             
-//            Button (action: {
-//                apertou -= 1
-//
-//            }, label: {
-//                Text("DESFAZER")
-//                    .foregroundStyle(.pretoAzul)
-//                    .font(.system(size: 16))
-//                    .bold()
-//                    .padding(.top, 64)
-//            })
-            
-            
-            
 //            Image(ImageResource.pageControl1)
 //
             

@@ -21,6 +21,7 @@
 		837CADE62BF78C1B00F96553 /* Pergunta5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837CADE52BF78C1B00F96553 /* Pergunta5.swift */; };
 		837CADE82BF7947E00F96553 /* PageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837CADE72BF7947E00F96553 /* PageControl.swift */; };
 		837CADEA2BF7A15700F96553 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837CADE92BF7A15700F96553 /* Result.swift */; };
+		837CADEC2BF7C9AA00F96553 /* CustomDialogAprova.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837CADEB2BF7C9AA00F96553 /* CustomDialogAprova.swift */; };
 		83D7EF722BF55C4F00588C12 /* FormatCurrency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D7EF712BF55C4F00588C12 /* FormatCurrency.swift */; };
 /* End PBXBuildFile section */
 
@@ -40,6 +41,7 @@
 		837CADE52BF78C1B00F96553 /* Pergunta5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pergunta5.swift; sourceTree = "<group>"; };
 		837CADE72BF7947E00F96553 /* PageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageControl.swift; sourceTree = "<group>"; };
 		837CADE92BF7A15700F96553 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		837CADEB2BF7C9AA00F96553 /* CustomDialogAprova.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDialogAprova.swift; sourceTree = "<group>"; };
 		83D7EF712BF55C4F00588C12 /* FormatCurrency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatCurrency.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -79,6 +81,7 @@
 				835F0B262BF3FAA10061AE9F /* Format.swift */,
 				836B07EE2BF53ED80068A0D3 /* CustomDialog.swift */,
 				831D26F42BF64D5D007F6858 /* CustomDialogCusto.swift */,
+				837CADEB2BF7C9AA00F96553 /* CustomDialogAprova.swift */,
 				835F0B022BF2AE490061AE9F /* Assets.xcassets */,
 				837CADE72BF7947E00F96553 /* PageControl.swift */,
 				831D26F82BF681E5007F6858 /* Pergunta1.swift */,
@@ -183,6 +186,7 @@
 				831D26F92BF681E5007F6858 /* Pergunta1.swift in Sources */,
 				835F0B272BF3FAA10061AE9F /* Format.swift in Sources */,
 				837CADE62BF78C1B00F96553 /* Pergunta5.swift in Sources */,
+				837CADEC2BF7C9AA00F96553 /* CustomDialogAprova.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

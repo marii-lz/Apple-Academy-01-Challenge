@@ -1,25 +1,26 @@
 //
-//  CustomDialog.swift
+//  CustomDialogAprova.swift
 //  01-app
 //
-//  Created by Marília Luz dos Santos on 15/05/24.
+//  Created by Marília Luz dos Santos on 17/05/24.
 //
 
 import SwiftUI
 
-struct CustomDialog: View {
+struct CustomDialogAprova: View {
     
-    @Binding var isActive: Bool
+    @Binding var preco: Double
+    @Binding var caixa: Double
     
-    let title: String
-    let message: String
-    let message2: String
+    @Binding var isActive3: Bool
 
-    @State private var offset: CGFloat = 1000
+    let message: String
+
+    @State private var offset3: CGFloat = 1000
     
     var body: some View {
         
-        if isActive {
+        if isActive3 {
             ZStack {
                 Color(.black)
                     .opacity(0.5)
@@ -31,34 +32,30 @@ struct CustomDialog: View {
                     
                     Spacer()
                     
-                    Text(title)
-                        .multilineTextAlignment(.center)
-                        .foregroundStyle(.pretoAzul)
-                        .font(.system(size: 20))
-                        .bold()
-                        .padding(.leading, 32.0)
-                        .padding(.trailing, 32.0)
-                        .padding(.top, 24)
-                        .padding(.bottom, 20)
-                        .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
-                    
                     Text(message)
                         .multilineTextAlignment(.center)
                         .foregroundStyle(.pretoAzul)
                         .font(.system(size: 14))
-                        .padding(.leading, 28.0)
-                        .padding(.trailing, 28.0)
+                        .padding(.leading, 20.0)
+                        .padding(.trailing, 20.0)
+                        .padding(.top, 16)
                         .padding(.bottom, 8)
-                        .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
+                        .frame(maxWidth: .infinity)
                     
-                    Text(message2)
-                        .multilineTextAlignment(.center)
+                    Text("- R$" + String(format: " %.2f", preco))
+                        .bold()
                         .foregroundStyle(.pretoAzul)
-                        .font(.system(size: 14))
-                        .padding(.leading, 28.0)
-                        .padding(.trailing, 28.0)
-                        .padding(.bottom, 24)
-                        .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
+                        .padding(.bottom, 8)
+                    
+                    Button (action: {
+                        
+                        var novoCaixa: Double = caixa - preco
+                        
+                    }
+                    , label: {
+                        Image(ImageResource.continuarBt)
+                    })
+                    .padding(.bottom, 16)
                     
                     Spacer()
                     
@@ -90,10 +87,10 @@ struct CustomDialog: View {
                 }
                 .shadow(radius: 20)
                 .padding(40)
-                .offset(x: 0, y: offset)
+                .offset(x: 0, y: offset3)
                 .onAppear{
                     withAnimation(.default) {
-                        offset = 0
+                        offset3 = 0
                     }
                 }
             }
@@ -106,13 +103,14 @@ struct CustomDialog: View {
     
     func close() {
        // withAnimation(.default) {
-            offset = 1000
-            isActive = false
+            offset3 = 1000
+            isActive3 = false
       //  }
     }
         
 }
 
 #Preview {
-    CustomDialog(isActive: .constant(true), title: "Quanto você vai guardar no porquinho?", message: "Para usar esse aplicativo, é preciso calcular previamente o valor que você tem disponível para gastar, no momento.",message2: "Então lembre-se de descontar os gastos fixos (água, luz, impostos, etc.), qualquer possível dívida (esperamos que nenhuma) e separe aquela parte investir (sugerimos pelo menos 25%) da sua renda. Daí agora sim, tá na hora de usar o app.")
+    CustomDialogAprova(preco: .constant(0.0), caixa: .constant(0.0), isActive3: .constant(true), message: "Ao aprovar a compra, serão descontados do seu caixa:")
 }
+

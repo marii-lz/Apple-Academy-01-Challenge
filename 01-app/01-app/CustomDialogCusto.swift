@@ -33,6 +33,7 @@ struct CustomDialogCusto: View {
                     
                     Text(title)
                         .multilineTextAlignment(.center)
+                        .foregroundStyle(.pretoAzul)
                         .font(.system(size: 20))
                         .bold()
                         .padding(.leading, 48.0)
@@ -43,6 +44,7 @@ struct CustomDialogCusto: View {
                     
                     Text(message)
                         .multilineTextAlignment(.center)
+                        .foregroundStyle(.pretoAzul)
                         .font(.system(size: 14))
                         .padding(.leading, 28.0)
                         .padding(.trailing, 28.0)
@@ -51,6 +53,7 @@ struct CustomDialogCusto: View {
                     
                     Text(message2)
                         .multilineTextAlignment(.center)
+                        .foregroundStyle(.pretoAzul)
                         .font(.system(size: 14))
                         .padding(.leading, 28.0)
                         .padding(.trailing, 28.0)

@@ -9,8 +9,7 @@ import SwiftUI
 
 
 struct ContentView: View {
-    @State var caixa: Double? = nil
-    @State var preco: Double? = nil
+    
     
     @State var screen: Int = 0
     
@@ -18,6 +17,7 @@ struct ContentView: View {
     
     @State var isActive: Bool = false
     @State var isActive2: Bool = false
+    @State var isActive3: Bool = false
     
     @State var colors: [Color] = [.black, .gray, .gray, .gray, .gray, .gray]
     
@@ -32,6 +32,9 @@ struct ContentView: View {
         maximum: 999_999.99,
         locale: .init(identifier: "pt_BR")
     )
+    
+    @State var caixa: Double = 0
+    @State var preco: Double = 0
     
     var body: some View {
         ZStack {
@@ -102,13 +105,6 @@ struct ContentView: View {
                                         isActive = true
                                     }
                                     
-                                
-                                //.onTapGesture {
-                                //self.showingSheet = true
-                                //}
-                                //.sheet(isPresented: $showingSheet) {
-                                //CustomPopup(isPresented: self.$showingSheet)
-                                //}
                                     .padding(.trailing, 48.0)
                                 
                             }
@@ -137,6 +133,8 @@ struct ContentView: View {
                                 .foregroundColor(.verdeTranslucido)
                             .padding(.leading, 72.0)
                                 
+                              //  var preco = currencyManagerBR2
+                                
                                 Image(ImageResource.infoBt)
                                     .onTapGesture {
                                         isActive2 = true
@@ -145,7 +143,17 @@ struct ContentView: View {
                             }
                             
                             Spacer()
-                            Button(action: {screen = 1}, label: {
+                            Button(action: {
+                                screen = 1
+                                if currencyManagerBR.doubleValue != nil {
+                                    caixa = currencyManagerBR.doubleValue!
+                                }
+                                
+                                if currencyManagerBR2.doubleValue != nil {
+                                    preco = currencyManagerBR2.doubleValue!
+                                }
+                                
+                            }, label: {
                                 ZStack{
                                     RoundedRectangle(cornerRadius: 24).foregroundColor(Color.verdeClaro).frame(width: 160, height: 40)
                                     Text("COMEÇAR")
@@ -170,7 +178,7 @@ struct ContentView: View {
                         Pergunta5(apertou: $screen, colors: $colors)
                         
                     case 6:
-                        Result(apertou: $screen)
+                        Result(apertou: $screen, isActive3: $isActive3)
                         
                     default:
                         Text("teste")
@@ -182,43 +190,12 @@ struct ContentView: View {
             CustomDialog(isActive: $isActive, title: "Quanto você vai guardar no porquinho?", message: "Para usar esse aplicativo, é preciso calcular previamente o valor que você tem disponível para gastar, no momento.",message2: "Então lembre-se de descontar os gastos fixos (água, luz, impostos, etc.), qualquer possível dívida (esperamos que nenhuma) e separe aquela parte investir (sugerimos pelo menos 25%) da sua renda. Daí agora sim, tá na hora de usar o app.")
             
             CustomDialogCusto(isActive2: $isActive2, title: "Já procurou o melhor preço né?", message: "Antes de inserir o preço do produto que você deseja comprar, recomendamos fazer uma pesquisa antes, para garantir que está no melhor preço disponível.",message2: "Confira se existem opções mais em conta ou se há algum desconto. Depois disso, é só digitar o valor aqui.")
+            
+            CustomDialogAprova(preco: $preco, caixa: $caixa, isActive3: $isActive3, message: "Ao aprovar a compra, serão descontados do seu caixa:")
         }
     }
     
     }
-
-
-//struct CustomPopup: View {
-//    @Binding var isPresented: Bool
-//    
-//    var body: some View {
-//        ZStack {
-//            Color.blue //Color(.clear)
-//            VStack {
-//                Text("Este é o pop-up personalizado.")
-//                    .padding()
-//                Button("Fechar") {
-//                    self.isPresented = false
-//                }
-//                .padding()
-//            }
-//           
-//            .background(Color.white)
-//            .cornerRadius(10)
-//            .padding()
-//            .frame(width: 300, height: 200)
-//        .shadow(radius: 10)
-//        }
-//        .compositingGroup()
-//        .opacity(0.8)
-//    }
-//}
-//
-//struct ContentView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ContentView()
-//    }
-//}
 
 #Preview {
     ContentView()

@@ -26,6 +26,7 @@ extension StringProtocol where Self: RangeReplaceableCollection {
 }
 class CurrencyManager: ObservableObject {
     @Published var string: String = ""
+    
     private let formatter = NumberFormatter(numberStyle: .currency)
     private var maximum: Decimal = 999_999_999.99
     private var lastValue: String = ""
@@ -45,5 +46,12 @@ class CurrencyManager: ObservableObject {
             string = formatter.string(for: newValue) ?? "$0.00"
             lastValue = string
         }
+    }
+    
+    var doubleValue: Double? {
+        guard let number = formatter.number(from: string) else {
+            return nil
+        }
+        return number.doubleValue
     }
 }
