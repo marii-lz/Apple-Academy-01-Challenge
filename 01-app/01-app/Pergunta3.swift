@@ -30,10 +30,13 @@ struct Pergunta3 : View {
             HStack {
                 
                 Button (action: {botaoSim3 = !botaoSim3
-                    if apertou <= 5 {
-                        colors[apertou-1] = .gray
-                        colors[apertou] = .black
-                        apertou += 1
+                    
+                    withAnimation{
+                        if apertou <= 5 {
+                            colors[apertou-1] = .gray
+                            colors[apertou] = .black
+                            apertou += 1
+                        }
                     }
                 })
                 {
@@ -50,10 +53,14 @@ struct Pergunta3 : View {
                 
                 Button (action: {
                     botaoNao3 = !botaoNao3
-                    if apertou <= 5 {
-                        colors[apertou-1] = .gray
-                        colors[apertou] = .black
-                        apertou += 1
+                    
+                    withAnimation{
+                        if apertou <= 5 {
+                            colors[apertou-1] = .gray
+                            colors[apertou] = .black
+                            apertou += 1
+                        }
+                        
                     }
                     
                 }) {
@@ -71,10 +78,13 @@ struct Pergunta3 : View {
             Spacer()
             
             Button (action: {
-                if apertou > 1 && apertou <= 5 {
-                    colors[apertou-1] = .gray
-                    colors[apertou-2] = .black
-                    apertou -= 1
+                
+                withAnimation{
+                    if apertou > 1 && apertou <= 5 {
+                        colors[apertou-1] = .gray
+                        colors[apertou-2] = .black
+                        apertou -= 1
+                    }
                 }
             }, label: {
                 Text("DESFAZER")

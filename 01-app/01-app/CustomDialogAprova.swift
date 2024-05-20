@@ -9,6 +9,8 @@ import SwiftUI
 
 struct CustomDialogAprova: View {
     
+    @Binding var apertou: Int
+    
     @Binding var preco: Double
     @Binding var caixa: Double
     
@@ -50,6 +52,7 @@ struct CustomDialogAprova: View {
                     Button (action: {
                         
                         var novoCaixa: Double = caixa - preco
+                        
                         
                     }
                     , label: {
@@ -111,6 +114,6 @@ struct CustomDialogAprova: View {
 }
 
 #Preview {
-    CustomDialogAprova(preco: .constant(0.0), caixa: .constant(0.0), isActive3: .constant(true), message: "Ao aprovar a compra, serão descontados do seu caixa:")
+    CustomDialogAprova(apertou: .constant(1), preco: .constant(0.0), caixa: .constant(0.0), isActive3: .constant(true), message: "Ao aprovar a compra, serão descontados do seu caixa:")
 }
 

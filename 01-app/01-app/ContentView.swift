@@ -13,13 +13,11 @@ struct ContentView: View {
     
     @State var screen: Int = 0
     
-  //  @State private var showingSheet = false
-    
     @State var isActive: Bool = false
     @State var isActive2: Bool = false
     @State var isActive3: Bool = false
     
-    @State var colors: [Color] = [.black, .gray, .gray, .gray, .gray, .gray]
+    @State var colors: [Color] = [.pretoAzul, .gray, .gray, .gray, .gray, .gray]
     
     @ObservedObject private var currencyManagerBR =  CurrencyManager(
         amount: 0,
@@ -191,7 +189,7 @@ struct ContentView: View {
             
             CustomDialogCusto(isActive2: $isActive2, title: "Já procurou o melhor preço né?", message: "Antes de inserir o preço do produto que você deseja comprar, recomendamos fazer uma pesquisa antes, para garantir que está no melhor preço disponível.",message2: "Confira se existem opções mais em conta ou se há algum desconto. Depois disso, é só digitar o valor aqui.")
             
-            CustomDialogAprova(preco: $preco, caixa: $caixa, isActive3: $isActive3, message: "Ao aprovar a compra, serão descontados do seu caixa:")
+            CustomDialogAprova(apertou: .constant(1), preco: $preco, caixa: $caixa, isActive3: $isActive3, message: "Ao aprovar a compra, serão descontados do seu caixa:")
         }
     }
     

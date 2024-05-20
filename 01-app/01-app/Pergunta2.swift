@@ -31,11 +31,12 @@ struct Pergunta2 : View {
                 
                 Button (action: {botaoSim2 = !botaoSim2
                     
-                    
-                    if apertou <= 5 {
-                        colors[apertou-1] = .gray
-                        colors[apertou] = .black
-                        apertou += 1
+                    withAnimation{
+                        if apertou <= 5 {
+                            colors[apertou-1] = .gray
+                            colors[apertou] = .black
+                            apertou += 1
+                        }
                     }
                     
                 }, label: {
@@ -52,10 +53,12 @@ struct Pergunta2 : View {
                 
                 Button (action: {botaoNao2 = !botaoNao2
                     
-                    if apertou <= 5 {
-                        colors[apertou-1] = .gray
-                        colors[apertou] = .black
-                        apertou += 1
+                    withAnimation{
+                        if apertou <= 5 {
+                            colors[apertou-1] = .gray
+                            colors[apertou] = .black
+                            apertou += 1
+                        }
                     }
                     
                 }, label: {
@@ -73,11 +76,15 @@ struct Pergunta2 : View {
             Spacer()
             
             Button (action: {
-                if apertou > 1 && apertou <= 5 {
-                    colors[apertou-1] = .gray
-                    colors[apertou-2] = .black
-                    apertou -= 1
+                
+                withAnimation{
+                    if apertou > 1 && apertou <= 5 {
+                        colors[apertou-1] = .gray
+                        colors[apertou-2] = .black
+                        apertou -= 1
+                    }
                 }
+                
             }, label: {
                 Text("DESFAZER")
                     .foregroundStyle(.pretoAzul)

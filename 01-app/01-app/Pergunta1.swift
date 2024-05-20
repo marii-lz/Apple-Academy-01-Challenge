@@ -32,10 +32,12 @@ struct Pergunta1 : View {
                 Button (action: {
                     botaoSim = !botaoSim
                     
-                    if apertou <= 5 {
-                        colors[apertou-1] = .gray
-                        colors[apertou] = .black
-                        apertou += 1
+                    withAnimation{
+                        if apertou <= 5 {
+                            colors[apertou-1] = .gray
+                            colors[apertou] = .black
+                            apertou += 1
+                        }
                     }
                     
                 }, label: {
@@ -53,10 +55,12 @@ struct Pergunta1 : View {
                 Button (action: {
                     botaoNao = !botaoNao
                     
-                    if apertou <= 5 {
-                        colors[apertou-1] = .gray
-                        colors[apertou] = .black
-                        apertou += 1
+                    withAnimation{
+                        if apertou <= 5 {
+                            colors[apertou-1] = .gray
+                            colors[apertou] = .black
+                            apertou += 1
+                        }
                     }
                     
                 }, label: {
