@@ -34,6 +34,9 @@ struct ContentView: View {
     @State var caixa: Double = 0
     @State var preco: Double = 0
     
+    let limitAlert = "O preço do produto não pode ser maior do quanto você tem disponível para gastar!"
+    @State var limitInput = false
+    
     var body: some View {
         ZStack {
             ZStack(alignment: .top) {
@@ -54,9 +57,8 @@ struct ContentView: View {
                                 .cornerRadius(24)
                                 .frame(width: 130, height: 57)
                             Text("caixa")
-                                .font(.system(size: 18))
+                                .font(.display)
                                 .foregroundStyle(.white)
-                                .bold()
                                 .padding(.bottom, 5)
                         }.offset(y:-28)
                         
@@ -142,14 +144,21 @@ struct ContentView: View {
                             
                             Spacer()
                             Button(action: {
-                                screen = 1
-                                if currencyManagerBR.doubleValue != nil {
-                                    caixa = currencyManagerBR.doubleValue!
+                                
+                                guard
+                                    let caixa = currencyManagerBR.doubleValue,
+                                
+                                    let preco = currencyManagerBR2.doubleValue,
+                                    
+                                    caixa - preco >= 0
+                                
+                                else {
+                                    limitInput = true
+                                    return
                                 }
                                 
-                                if currencyManagerBR2.doubleValue != nil {
-                                    preco = currencyManagerBR2.doubleValue!
-                                }
+                                screen = 1
+
                                 
                             }, label: {
                                 ZStack{
@@ -158,7 +167,13 @@ struct ContentView: View {
                                         .foregroundColor(Color.white)
                                         .bold()
                                 }
+                                
                             })
+                            
+                            .alert(limitAlert, isPresented: $limitInput){
+                                Button("OK", role: .cancel, action: {})
+                            }
+                            
                             Spacer()
                         }
                     case 1:

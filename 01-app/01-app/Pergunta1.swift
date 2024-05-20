@@ -40,6 +40,8 @@ struct Pergunta1 : View {
                         }
                     }
                     
+                    
+                    
                 }, label: {
                     
                     HStack{
