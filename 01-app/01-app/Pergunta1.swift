@@ -10,6 +10,7 @@ import SwiftUI
 struct Pergunta1 : View {
     
     @Binding var apertou: Int
+    
     // botao = 0 -> dois desativados
     // botao = 1 -> sim ativado
     // botao = 2 -> nao ativado

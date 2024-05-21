@@ -38,7 +38,13 @@ struct Pergunta5 : View {
                     } else {
                         botao[4] = 0
                     }
-                    apertou += 1
+                    withAnimation{
+                        if apertou <= 8 {
+                            colors[apertou-1] = .cinzaClaro
+                            colors[apertou] = .black
+                            apertou += 1
+                        }
+                    }
                 }, label: {
                     
                     HStack{

@@ -54,4 +54,12 @@ class CurrencyManager: ObservableObject {
         }
         return number.doubleValue
     }
+    
+    public static var initial: CurrencyManager {
+        .init(
+            amount: 0,
+            maximum: 999_999.99,
+            locale: .init(identifier: "pt_BR")
+        )
+    }
 }

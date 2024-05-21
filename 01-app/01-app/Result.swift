@@ -13,11 +13,13 @@ struct Result : View {
     @State var aprovar = false
     @State var refazer = false
     
-  
+    @Binding var botao: [Int]
     
     @Binding var isActive3: Bool
     
     @Binding var resultado: Double
+    
+    var tocouRefazer: () -> Void
     
     var body: some View {
         
@@ -39,7 +41,7 @@ struct Result : View {
                 .padding(.bottom, 1)
                
             
-            Text((String(format: "%.2f", resultado)+"%"))
+            Text((String(format: "%.1f", resultado)+"%"))
                 .multilineTextAlignment(.center)
                 .foregroundStyle(.pretoAzul)
                 .bold()
@@ -50,6 +52,8 @@ struct Result : View {
                 
                 Button (action: {
                     apertou = 0
+                    tocouRefazer()
+                    
                 }, label: {
                     HStack{
                         if refazer {
@@ -85,5 +89,5 @@ struct Result : View {
     }
 }
 #Preview {
-    Result(apertou: .constant(1), isActive3: .constant(true), resultado: .constant(0.0))
+    Result(apertou: .constant(1), botao: .constant([0,0,0,0,0,0,0,0]), isActive3: .constant(true), resultado: .constant(0.0), tocouRefazer: {})
 }

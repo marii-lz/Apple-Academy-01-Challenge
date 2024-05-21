@@ -19,23 +19,14 @@ struct ContentView: View {
     
     @State var colors: [Color] = [.pretoAzul, .cinzaClaro, .cinzaClaro, .cinzaClaro, .cinzaClaro, .cinzaClaro, .cinzaClaro, .cinzaClaro, .cinzaClaro]
     
-    @ObservedObject private var currencyManagerBR =  CurrencyManager(
-        amount: 0,
-        maximum: 999_999.99,
-        locale: .init(identifier: "pt_BR")
-    )
+    @ObservedObject private var currencyManagerBR = CurrencyManager.initial
     
-    @ObservedObject private var currencyManagerBR2 =  CurrencyManager(
-        amount: 0,
-        maximum: 999_999.99,
-        locale: .init(identifier: "pt_BR")
-    )
+    @ObservedObject private var currencyManagerBR2 =  CurrencyManager.initial
     
     @State var caixa: Double = 0
     @State var preco: Double = 0
     
     @State var botoes: [Int] = [0,0,0,0,0,0,0,0]
-    // [1,1,1,2,2,1,2]
     
     @State var resultado: Double = 0.0
     
@@ -240,7 +231,25 @@ struct ContentView: View {
                         Pergunta8(apertou: $screen, botao: $botoes, colors: $colors, resultado: $resultado)
                         
                     case 9:
-                        Result(apertou: $screen, isActive3: $isActive3, resultado: $resultado)
+                        Result(apertou: $screen, botao: $botoes, isActive3: $isActive3, resultado: $resultado, tocouRefazer:{
+                            clear()
+                        })
+                        
+                    case 10:
+                        Resultado1(apertou: $screen, tocouRefazer:{
+                            clear()
+                        })
+                        
+                    case 11:
+                        Resultado2(apertou: $screen, tocouRefazer:{
+                            clear()
+                        })
+                        
+                    case 12:
+                        Resultado3(apertou: $screen, tocouRefazer:{
+                            clear()
+                        })
+                    
                         //                        Text("\(botoes[0])")
                         //                        Text("\(botoes[1])")
                         //                        Text("\(botoes[2])")
@@ -261,8 +270,17 @@ struct ContentView: View {
             
             CustomDialogCusto(isActive2: $isActive2, title: "Já procurou o melhor preço né?", message: "Antes de inserir o preço do produto que você deseja comprar, recomendamos fazer uma pesquisa antes, para garantir que está no melhor preço disponível.",message2: "Confira se existem opções mais em conta ou se há algum desconto. Depois disso, é só digitar o valor aqui.")
             
-            CustomDialogAprova(apertou: .constant(1), preco: $preco, caixa: $caixa, isActive3: $isActive3, message: "Ao aprovar a compra, serão descontados do seu caixa:")
+            CustomDialogAprova(apertou: $screen, preco: $preco, caixa: $caixa, isActive3: $isActive3, resultado: $resultado, message: "Ao aprovar a compra, serão descontados do seu caixa:")
         }
+    }
+    
+    func clear() {
+        currencyManagerBR.string = "$0.00"
+        currencyManagerBR2.string = "$0.00"
+        caixa = 0
+        preco = 0
+        resultado = 0
+        botoes = [0,0,0,0,0,0,0,0]
     }
     
 }

@@ -13,6 +13,8 @@ struct Resultado3 : View {
     
     @State var botaoInicio3 = false
     
+    var tocouRefazer: () -> Void
+    
     var body: some View {
         
         VStack {
@@ -30,6 +32,8 @@ struct Resultado3 : View {
             
             Button (action: {
                 apertou = 0
+                tocouRefazer()
+
             }, label: {
                 VStack{
                     if botaoInicio3 {
@@ -44,5 +48,5 @@ struct Resultado3 : View {
     }
 }
 #Preview{
-    Resultado3(apertou: .constant(1))
+    Resultado3(apertou: .constant(1), tocouRefazer: {})
 }

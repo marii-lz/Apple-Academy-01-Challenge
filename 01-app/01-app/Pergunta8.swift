@@ -9,6 +9,7 @@ import SwiftUI
 
 struct Pergunta8 : View {
     @Binding var apertou: Int
+    
     @Binding var botao: [Int]
     
     @Binding var colors: [Color]

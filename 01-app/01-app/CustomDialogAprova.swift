@@ -15,6 +15,8 @@ struct CustomDialogAprova: View {
     @Binding var caixa: Double
     
     @Binding var isActive3: Bool
+    
+    @Binding var resultado: Double
 
     let message: String
 
@@ -51,8 +53,16 @@ struct CustomDialogAprova: View {
                     
                     Button (action: {
                         
-                        var novoCaixa: Double = caixa - preco
-                        
+                        if resultado < 50 {
+                            apertou = 10
+                        }
+                        else if (50 <= resultado) && (resultado < 70) {
+                            apertou = 11
+                        }
+                        else if (70 <= resultado) {
+                            apertou = 12
+                        }
+
                         
                     }
                     , label: {
@@ -114,6 +124,6 @@ struct CustomDialogAprova: View {
 }
 
 #Preview {
-    CustomDialogAprova(apertou: .constant(1), preco: .constant(0.0), caixa: .constant(0.0), isActive3: .constant(true), message: "Ao aprovar a compra, serão descontados do seu caixa:")
+    CustomDialogAprova(apertou: .constant(1), preco: .constant(0.0), caixa: .constant(0.0), isActive3: .constant(true), resultado: .constant(0.0), message: "Ao aprovar a compra, serão descontados do seu caixa:")
 }
 
