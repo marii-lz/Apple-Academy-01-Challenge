@@ -17,15 +17,20 @@ struct Pergunta4 : View {
     var body: some View {
         
         VStack {
-            Text("Trará retorno financeiro/produtivo/satisfação pessoal?")
+            Text("Eu já conferi o histórico")
                 .multilineTextAlignment(.center)
                 .foregroundStyle(.verdeEscuro)
                 .font(.system(size: 22))
                 .bold()
-                .padding(.leading, 28.0)
-                .padding(.trailing, 28.0)
+                .padding(.top, 48)
+            Text("de preços, e agora é o melhor momento para comprar?")
+                .multilineTextAlignment(.center)
+                .foregroundStyle(.verdeEscuro)
+                .font(.system(size: 22))
+                .bold()
+                .padding(.leading, 32.0)
+                .padding(.trailing, 32.0)
                 .padding(.bottom, 20.0)
-                .padding(.top, 72)
 
             HStack {
                 
@@ -33,7 +38,7 @@ struct Pergunta4 : View {
                     botaoSim4 = !botaoSim4
                     
                     withAnimation{
-                        if apertou <= 5 {
+                        if apertou <= 8 {
                             colors[apertou-1] = .gray
                             colors[apertou] = .black
                             apertou += 1
@@ -56,7 +61,7 @@ struct Pergunta4 : View {
                     botaoNao4 = !botaoNao4
                     
                     withAnimation{
-                        if apertou <= 5 {
+                        if apertou <= 8 {
                             colors[apertou-1] = .gray
                             colors[apertou] = .black
                             apertou += 1
@@ -80,7 +85,7 @@ struct Pergunta4 : View {
             Button (action: {
                 
                 withAnimation{
-                    if apertou > 1 && apertou <= 5 {
+                    if apertou > 1 && apertou <= 8 {
                         colors[apertou-1] = .gray
                         colors[apertou-2] = .black
                         apertou -= 1
@@ -109,5 +114,5 @@ struct Pergunta4 : View {
     }
 }
 #Preview {
-    Pergunta4(apertou: .constant(1), colors: .constant([.black, .gray, .gray, .gray, .gray]))
+    Pergunta4(apertou: .constant(1), colors: .constant([.black, .gray, .gray, .gray, .gray, .gray, .gray, .gray, .gray]))
 }

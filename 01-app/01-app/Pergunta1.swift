@@ -33,7 +33,7 @@ struct Pergunta1 : View {
                     botaoSim = !botaoSim
                     
                     withAnimation{
-                        if apertou <= 5 {
+                        if apertou <= 8 {
                             colors[apertou-1] = .gray
                             colors[apertou] = .black
                             apertou += 1
@@ -58,7 +58,7 @@ struct Pergunta1 : View {
                     botaoNao = !botaoNao
                     
                     withAnimation{
-                        if apertou <= 5 {
+                        if apertou <= 8 {
                             colors[apertou-1] = .gray
                             colors[apertou] = .black
                             apertou += 1
@@ -79,6 +79,19 @@ struct Pergunta1 : View {
             
             Spacer()
             
+            Button (action: {
+                
+                apertou = 0
+                
+            }, label: {
+                Text("VOLTAR")
+                    .foregroundStyle(.pretoAzul)
+                    .font(.system(size: 16))
+                    .bold()
+                    .padding(.top, 64)
+                    .padding(.bottom, 16)
+            })
+            
             PageControl(apertou: $apertou, colors: $colors)
                 .padding(.bottom, 48)
             
@@ -92,5 +105,5 @@ struct Pergunta1 : View {
     }
 }
 #Preview {
-    Pergunta1(apertou: .constant(1), colors: .constant([.black, .gray, .gray, .gray, .gray]))
+    Pergunta1(apertou: .constant(1), colors: .constant([.black, .gray, .gray, .gray, .gray, .gray, .gray, .gray, .gray]))
 }

@@ -34,6 +34,18 @@ struct PageControl: View {
                 .frame(width: 8)
                 .foregroundStyle(colors[4])
                 .animation(.easeInOut, value: apertou)
+            Circle()
+                .frame(width: 8)
+                .foregroundStyle(colors[5])
+                .animation(.easeInOut, value: apertou)
+            Circle()
+                .frame(width: 8)
+                .foregroundStyle(colors[6])
+                .animation(.easeInOut, value: apertou)
+            Circle()
+                .frame(width: 8)
+                .foregroundStyle(colors[7])
+                .animation(.easeInOut, value: apertou)
         }
     }
 }

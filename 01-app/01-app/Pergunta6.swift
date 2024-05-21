@@ -1,23 +1,23 @@
 //
-//  Pergunta3.swift
+//  Pergunta6.swift
 //  01-app
 //
-//  Created by Marília Luz dos Santos on 16/05/24.
+//  Created by Marília Luz dos Santos on 21/05/24.
 //
 
 import SwiftUI
 
-struct Pergunta3 : View {
+struct Pergunta6 : View {
     @Binding var apertou: Int
-    @State var botaoSim3 = false
-    @State var botaoNao3 = false
+    @State var botaoSim6 = false
+    @State var botaoNao6 = false
     
     @Binding var colors: [Color]
     
     var body: some View {
         
         VStack {
-            Text("É algo apenas para seguir uma moda/tendência?")
+            Text("Esse produto resolve uma necessidade minha?")
                 .multilineTextAlignment(.center)
                 .foregroundStyle(.verdeEscuro)
                 .font(.system(size: 22))
@@ -26,10 +26,11 @@ struct Pergunta3 : View {
                 .padding(.trailing, 32.0)
                 .padding(.bottom, 20.0)
                 .padding(.top, 72)
-            
+
             HStack {
                 
-                Button (action: {botaoSim3 = !botaoSim3
+                Button (action: {
+                    botaoSim6 = !botaoSim6
                     
                     withAnimation{
                         if apertou <= 8 {
@@ -38,11 +39,11 @@ struct Pergunta3 : View {
                             apertou += 1
                         }
                     }
-                })
-                {
+                    
+                }) {
                     
                     HStack{
-                        if botaoSim3 {
+                        if botaoSim6 {
                             Image(ImageResource.simBtVerde)
                             
                         } else {
@@ -52,7 +53,7 @@ struct Pergunta3 : View {
                 }
                 
                 Button (action: {
-                    botaoNao3 = !botaoNao3
+                    botaoNao6 = !botaoNao6
                     
                     withAnimation{
                         if apertou <= 8 {
@@ -60,19 +61,18 @@ struct Pergunta3 : View {
                             colors[apertou] = .black
                             apertou += 1
                         }
-                        
                     }
                     
-                }) {
+                }, label: {
                     
                     HStack{
-                        if botaoNao3 {
+                        if botaoNao6 {
                             Image(ImageResource.naoBtVerde)
                         } else {
                             Image(ImageResource.naoBt)
                         }
                     }
-                }.padding(.leading, 12)
+                }).padding(.leading, 12)
             }
             
             Spacer()
@@ -86,6 +86,7 @@ struct Pergunta3 : View {
                         apertou -= 1
                     }
                 }
+                
             }, label: {
                 Text("DESFAZER")
                     .foregroundStyle(.pretoAzul)
@@ -99,15 +100,14 @@ struct Pergunta3 : View {
                 .padding(.bottom, 48)
             
             //Image(ImageResource.pageControl1)
-            //  .padding(.bottom, 48)
+              //  .padding(.bottom, 48)
             
         }.ignoresSafeArea()
-        //.frame(width: 345, height: 562)
+            //.frame(width: 345, height: 562)
+            
         
     }
 }
 #Preview {
-    Pergunta3(apertou: .constant(1), colors: .constant([.black, .gray, .gray, .gray, .gray, .gray, .gray, .gray, .gray]))
+    Pergunta6(apertou: .constant(1), colors: .constant([.black, .gray, .gray, .gray, .gray, .gray, .gray, .gray, .gray]))
 }
-
-

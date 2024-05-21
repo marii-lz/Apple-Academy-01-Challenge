@@ -32,7 +32,7 @@ struct Pergunta2 : View {
                 Button (action: {botaoSim2 = !botaoSim2
                     
                     withAnimation{
-                        if apertou <= 5 {
+                        if apertou <= 8 {
                             colors[apertou-1] = .gray
                             colors[apertou] = .black
                             apertou += 1
@@ -54,7 +54,7 @@ struct Pergunta2 : View {
                 Button (action: {botaoNao2 = !botaoNao2
                     
                     withAnimation{
-                        if apertou <= 5 {
+                        if apertou <= 8 {
                             colors[apertou-1] = .gray
                             colors[apertou] = .black
                             apertou += 1
@@ -78,7 +78,7 @@ struct Pergunta2 : View {
             Button (action: {
                 
                 withAnimation{
-                    if apertou > 1 && apertou <= 5 {
+                    if apertou > 1 && apertou <= 8 {
                         colors[apertou-1] = .gray
                         colors[apertou-2] = .black
                         apertou -= 1
@@ -106,6 +106,6 @@ struct Pergunta2 : View {
     }
 }
 #Preview {
-    Pergunta2(apertou: .constant(1), colors: .constant([.black, .gray, .gray, .gray, .gray]))
+    Pergunta2(apertou: .constant(1), colors: .constant([.black, .gray, .gray, .gray, .gray, .gray, .gray, .gray, .gray]))
 }
 

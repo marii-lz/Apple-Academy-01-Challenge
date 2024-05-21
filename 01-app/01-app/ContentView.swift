@@ -17,7 +17,7 @@ struct ContentView: View {
     @State var isActive2: Bool = false
     @State var isActive3: Bool = false
     
-    @State var colors: [Color] = [.pretoAzul, .gray, .gray, .gray, .gray, .gray]
+    @State var colors: [Color] = [.pretoAzul, .gray, .gray, .gray, .gray, .gray, .gray, .gray, .gray]
     
     @ObservedObject private var currencyManagerBR =  CurrencyManager(
         amount: 0,
@@ -36,6 +36,9 @@ struct ContentView: View {
     
     let limitAlert = "O preço do produto não pode ser maior do quanto você tem disponível para gastar!"
     @State var limitInput = false
+    
+    let zeroAlert = "Preencha todos os campos para continuar!"
+    @State var zeroInput = false
     
     var body: some View {
         ZStack {
@@ -147,12 +150,15 @@ struct ContentView: View {
                                 
                                 guard
                                     let caixa = currencyManagerBR.doubleValue,
-                                
                                     let preco = currencyManagerBR2.doubleValue,
-                                    
-                                    caixa - preco >= 0
-                                
+                                        
+                                        caixa > 0, preco > 0 
                                 else {
+                                    zeroInput = true
+                                    return
+                                }
+                                
+                                guard caixa - preco >= 0 else {
                                     limitInput = true
                                     return
                                 }
@@ -174,6 +180,10 @@ struct ContentView: View {
                                 Button("OK", role: .cancel, action: {})
                             }
                             
+                            .alert(zeroAlert, isPresented: $zeroInput){
+                                Button("OK", role: .cancel, action: {})
+                            }
+                            
                             Spacer()
                         }
                     case 1:
@@ -191,6 +201,15 @@ struct ContentView: View {
                         Pergunta5(apertou: $screen, colors: $colors)
                         
                     case 6:
+                        Pergunta6(apertou: $screen, colors: $colors)
+                        
+                    case 7:
+                        Pergunta7(apertou: $screen, colors: $colors)
+                        
+                    case 8:
+                        Pergunta8(apertou: $screen, colors: $colors)
+                        
+                    case 9:
                         Result(apertou: $screen, isActive3: $isActive3)
                         
                     default:

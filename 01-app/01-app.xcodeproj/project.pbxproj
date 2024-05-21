@@ -30,6 +30,9 @@
 		831D534C2BFBCD4700732A0B /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 831D53392BFBCD4600732A0B /* README.txt */; };
 		831D534D2BFBCD4700732A0B /* Rubik-Italic-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 831D533A2BFBCD4600732A0B /* Rubik-Italic-VariableFont_wght.ttf */; };
 		831D534E2BFBCD4700732A0B /* Rubik-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 831D533B2BFBCD4600732A0B /* Rubik-VariableFont_wght.ttf */; };
+		833AB0572BFCBFFB00DDFDDA /* Pergunta6.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833AB0562BFCBFFB00DDFDDA /* Pergunta6.swift */; };
+		833AB0592BFCC19D00DDFDDA /* Pergunta7.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833AB0582BFCC19D00DDFDDA /* Pergunta7.swift */; };
+		833AB05B2BFCC23100DDFDDA /* Pergunta8.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833AB05A2BFCC23100DDFDDA /* Pergunta8.swift */; };
 		835F0AFF2BF2AE480061AE9F /* _1_appApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835F0AFE2BF2AE480061AE9F /* _1_appApp.swift */; };
 		835F0B012BF2AE480061AE9F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835F0B002BF2AE480061AE9F /* ContentView.swift */; };
 		835F0B032BF2AE490061AE9F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 835F0B022BF2AE490061AE9F /* Assets.xcassets */; };
@@ -72,6 +75,9 @@
 		831D53392BFBCD4600732A0B /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
 		831D533A2BFBCD4600732A0B /* Rubik-Italic-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Italic-VariableFont_wght.ttf"; sourceTree = "<group>"; };
 		831D533B2BFBCD4600732A0B /* Rubik-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-VariableFont_wght.ttf"; sourceTree = "<group>"; };
+		833AB0562BFCBFFB00DDFDDA /* Pergunta6.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pergunta6.swift; sourceTree = "<group>"; };
+		833AB0582BFCC19D00DDFDDA /* Pergunta7.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pergunta7.swift; sourceTree = "<group>"; };
+		833AB05A2BFCC23100DDFDDA /* Pergunta8.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pergunta8.swift; sourceTree = "<group>"; };
 		835F0AFB2BF2AE480061AE9F /* 01-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "01-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		835F0AFE2BF2AE480061AE9F /* _1_appApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _1_appApp.swift; sourceTree = "<group>"; };
 		835F0B002BF2AE480061AE9F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -171,6 +177,9 @@
 				831D26FC2BF69881007F6858 /* Pergunta3.swift */,
 				837CADE32BF78B3200F96553 /* Pergunta4.swift */,
 				837CADE52BF78C1B00F96553 /* Pergunta5.swift */,
+				833AB0562BFCBFFB00DDFDDA /* Pergunta6.swift */,
+				833AB0582BFCC19D00DDFDDA /* Pergunta7.swift */,
+				833AB05A2BFCC23100DDFDDA /* Pergunta8.swift */,
 				837CADE92BF7A15700F96553 /* Result.swift */,
 				8374C7F22BFB882200A356A1 /* Resultado1.swift */,
 				8374C7F42BFB970D00A356A1 /* Resultado2.swift */,
@@ -279,6 +288,7 @@
 				8374C7F52BFB970D00A356A1 /* Resultado2.swift in Sources */,
 				83D7EF722BF55C4F00588C12 /* FormatCurrency.swift in Sources */,
 				837CADEA2BF7A15700F96553 /* Result.swift in Sources */,
+				833AB0592BFCC19D00DDFDDA /* Pergunta7.swift in Sources */,
 				831D26F52BF64D5D007F6858 /* CustomDialogCusto.swift in Sources */,
 				837CADE82BF7947E00F96553 /* PageControl.swift in Sources */,
 				8374C7F72BFB979700A356A1 /* Resultado3.swift in Sources */,
@@ -286,8 +296,10 @@
 				836B07EF2BF53ED80068A0D3 /* CustomDialog.swift in Sources */,
 				831D53192BFBCB7900732A0B /* StyleGuide.swift in Sources */,
 				835F0B012BF2AE480061AE9F /* ContentView.swift in Sources */,
+				833AB05B2BFCC23100DDFDDA /* Pergunta8.swift in Sources */,
 				831D26FD2BF69881007F6858 /* Pergunta3.swift in Sources */,
 				837CADE42BF78B3200F96553 /* Pergunta4.swift in Sources */,
+				833AB0572BFCBFFB00DDFDDA /* Pergunta6.swift in Sources */,
 				835F0AFF2BF2AE480061AE9F /* _1_appApp.swift in Sources */,
 				831D26F92BF681E5007F6858 /* Pergunta1.swift in Sources */,
 				835F0B272BF3FAA10061AE9F /* Format.swift in Sources */,
