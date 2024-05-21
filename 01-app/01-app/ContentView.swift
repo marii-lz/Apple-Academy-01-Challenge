@@ -13,11 +13,13 @@ struct ContentView: View {
     
     @State var screen: Int = 0
     
+    @State var resultCent: Double = 0 //variável para cálculo
+    
     @State var isActive: Bool = false
     @State var isActive2: Bool = false
     @State var isActive3: Bool = false
     
-    @State var colors: [Color] = [.pretoAzul, .gray, .gray, .gray, .gray, .gray, .gray, .gray, .gray]
+    @State var colors: [Color] = [.pretoAzul, .cinzaClaro, .cinzaClaro, .cinzaClaro, .cinzaClaro, .cinzaClaro, .cinzaClaro, .cinzaClaro, .cinzaClaro]
     
     @ObservedObject private var currencyManagerBR =  CurrencyManager(
         amount: 0,
@@ -33,6 +35,9 @@ struct ContentView: View {
     
     @State var caixa: Double = 0
     @State var preco: Double = 0
+    
+    @State var botoes: [Int] = [0,0,0,0,0,0,0,0]
+    // [1,1,1,2,2,1,2]
     
     let limitAlert = "O preço do produto não pode ser maior do quanto você tem disponível para gastar!"
     @State var limitInput = false
@@ -68,9 +73,9 @@ struct ContentView: View {
                         ZStack(alignment: .leading) {
                             Image(ImageResource.retanguloCaixa)
                             Text(currencyManagerBR.string)
-                                    .foregroundColor(.verdeEscuro)
-                                    .font(.system(size: 24))
-                                    .padding(.leading, 28)
+                                .foregroundColor(.verdeEscuro)
+                                .font(.system(size: 24))
+                                .padding(.leading, 28)
                             
                         }.offset(y: -50)
                     }
@@ -91,23 +96,23 @@ struct ContentView: View {
                                     .keyboardType(.numberPad)
                                     .onChange(of: currencyManagerBR.string, perform: currencyManagerBR.valueChanged)
                                 
-                                .padding(.vertical, 12)
-                                .padding(.leading, 12)
-                                .background(Color.verdeBranco)
-                                .clipShape(.rect(cornerRadius: 8))
-
-                                .keyboardType(
-                                    .numberPad)
-                                .font(.system(size: 24))
-                                .foregroundColor(.verdeTranslucido)
-                                .padding(.leading, 72.0)
+                                    .padding(.vertical, 12)
+                                    .padding(.leading, 12)
+                                    .background(Color.verdeBranco)
+                                    .clipShape(.rect(cornerRadius: 8))
                                 
-                            
+                                    .keyboardType(
+                                        .numberPad)
+                                    .font(.system(size: 24))
+                                    .foregroundColor(.verdeTranslucido)
+                                    .padding(.leading, 72.0)
+                                
+                                
                                 Image(ImageResource.infoBt)
                                     .onTapGesture {
                                         isActive = true
                                     }
-                                    
+                                
                                     .padding(.trailing, 48.0)
                                 
                             }
@@ -125,18 +130,18 @@ struct ContentView: View {
                                     .keyboardType(.numberPad)
                                     .onChange(of: currencyManagerBR2.string, perform: currencyManagerBR2.valueChanged)
                                 
-                                .padding(.vertical, 12)
-                                .padding(.leading, 12)
-                                .background(Color.verdeBranco)
-                                .clipShape(.rect(cornerRadius: 8))
+                                    .padding(.vertical, 12)
+                                    .padding(.leading, 12)
+                                    .background(Color.verdeBranco)
+                                    .clipShape(.rect(cornerRadius: 8))
                                 
-                                .keyboardType(
-                                    .numberPad)
-                                .font(.system(size: 24))
-                                .foregroundColor(.verdeTranslucido)
-                            .padding(.leading, 72.0)
+                                    .keyboardType(
+                                        .numberPad)
+                                    .font(.system(size: 24))
+                                    .foregroundColor(.verdeTranslucido)
+                                    .padding(.leading, 72.0)
                                 
-                              //  var preco = currencyManagerBR2
+                                //  var preco = currencyManagerBR2
                                 
                                 Image(ImageResource.infoBt)
                                     .onTapGesture {
@@ -151,8 +156,8 @@ struct ContentView: View {
                                 guard
                                     let caixa = currencyManagerBR.doubleValue,
                                     let preco = currencyManagerBR2.doubleValue,
-                                        
-                                        caixa > 0, preco > 0 
+                                    
+                                        caixa > 0, preco > 0
                                 else {
                                     zeroInput = true
                                     return
@@ -164,7 +169,7 @@ struct ContentView: View {
                                 }
                                 
                                 screen = 1
-
+                                
                                 
                             }, label: {
                                 ZStack{
@@ -187,30 +192,38 @@ struct ContentView: View {
                             Spacer()
                         }
                     case 1:
-                        Pergunta1(apertou: $screen, colors: $colors)
+                        Pergunta1(apertou: $screen, botao: $botoes, colors: $colors)
                     case 2:
-                        Pergunta2(apertou: $screen, colors: $colors)
+                        Pergunta2(apertou: $screen, botao: $botoes, colors: $colors)
                         
                     case 3:
-                        Pergunta3(apertou: $screen, colors: $colors)
+                        Pergunta3(apertou: $screen, botao: $botoes, colors: $colors)
                         
                     case 4:
-                        Pergunta4(apertou: $screen, colors: $colors)
+                        Pergunta4(apertou: $screen, botao: $botoes, colors: $colors)
                         
                     case 5:
-                        Pergunta5(apertou: $screen, colors: $colors)
+                        Pergunta5(apertou: $screen, botao: $botoes, colors: $colors)
                         
                     case 6:
-                        Pergunta6(apertou: $screen, colors: $colors)
+                        Pergunta6(apertou: $screen, botao: $botoes, colors: $colors)
                         
                     case 7:
-                        Pergunta7(apertou: $screen, colors: $colors)
+                        Pergunta7(apertou: $screen, botao: $botoes, colors: $colors)
                         
                     case 8:
-                        Pergunta8(apertou: $screen, colors: $colors)
+                        Pergunta8(apertou: $screen, botao: $botoes, colors: $colors)
                         
                     case 9:
                         Result(apertou: $screen, isActive3: $isActive3)
+                        //                        Text("\(botoes[0])")
+                        //                        Text("\(botoes[1])")
+                        //                        Text("\(botoes[2])")
+                        //                        Text("\(botoes[3])")
+                        //                        Text("\(botoes[4])")
+                        //                        Text("\(botoes[5])")
+                        //                        Text("\(botoes[6])")
+                        //                        Text("\(botoes[7])")
                         
                     default:
                         Text("teste")
@@ -227,7 +240,7 @@ struct ContentView: View {
         }
     }
     
-    }
+}
 
 #Preview {
     ContentView()

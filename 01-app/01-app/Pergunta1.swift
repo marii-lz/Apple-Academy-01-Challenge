@@ -8,9 +8,12 @@
 import SwiftUI
 
 struct Pergunta1 : View {
+    
     @Binding var apertou: Int
-    @State var botaoSim = false
-    @State var botaoNao = false
+    // botao = 0 -> dois desativados
+    // botao = 1 -> sim ativado
+    // botao = 2 -> nao ativado
+    @Binding var botao: [Int]
     
     @Binding var colors: [Color]
     
@@ -30,22 +33,26 @@ struct Pergunta1 : View {
             HStack {
                 
                 Button (action: {
-                    botaoSim = !botaoSim
+                    if (botao[0] != 1) {
+                        botao[0] = 1
+                    } else {
+                        botao[0] = 0
+                    }
                     
                     withAnimation{
                         if apertou <= 8 {
-                            colors[apertou-1] = .gray
+                            colors[apertou-1] = .cinzaClaro
                             colors[apertou] = .black
                             apertou += 1
                         }
                     }
-                    
+                
                     
                     
                 }, label: {
                     
                     HStack{
-                        if botaoSim {
+                        if botao[0] == 1 {
                             Image(ImageResource.simBtVerde)
                             
                         } else {
@@ -55,20 +62,25 @@ struct Pergunta1 : View {
                 })
                 
                 Button (action: {
-                    botaoNao = !botaoNao
+                    if (botao[0] != 2) {
+                        botao[0] = 2
+                    } else {
+                        botao[0] = 0
+                    }
                     
                     withAnimation{
                         if apertou <= 8 {
-                            colors[apertou-1] = .gray
+                            colors[apertou-1] = .cinzaClaro
                             colors[apertou] = .black
                             apertou += 1
                         }
                     }
+                
                     
                 }, label: {
                     
                     HStack{
-                        if botaoNao {
+                        if botao[0] == 2 {
                             Image(ImageResource.naoBtVerde)
                         } else {
                             Image(ImageResource.naoBt)
@@ -105,5 +117,5 @@ struct Pergunta1 : View {
     }
 }
 #Preview {
-    Pergunta1(apertou: .constant(1), colors: .constant([.black, .gray, .gray, .gray, .gray, .gray, .gray, .gray, .gray]))
+    Pergunta1(apertou: .constant(1), botao: .constant([0,0,0,0,0,0,0,0]), colors: .constant([.black, .cinzaClaro, .cinzaClaro, .cinzaClaro, .cinzaClaro, .cinzaClaro, .cinzaClaro, .cinzaClaro, .cinzaClaro]))
 }

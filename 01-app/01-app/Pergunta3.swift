@@ -9,8 +9,7 @@ import SwiftUI
 
 struct Pergunta3 : View {
     @Binding var apertou: Int
-    @State var botaoSim3 = false
-    @State var botaoNao3 = false
+    @Binding var botao: [Int]
     
     @Binding var colors: [Color]
     
@@ -29,11 +28,16 @@ struct Pergunta3 : View {
             
             HStack {
                 
-                Button (action: {botaoSim3 = !botaoSim3
+                Button (action: {
+                if (botao[2] != 1) {
+                    botao[2] = 1
+                } else {
+                    botao[2] = 0
+                }
                     
                     withAnimation{
                         if apertou <= 8 {
-                            colors[apertou-1] = .gray
+                            colors[apertou-1] = .cinzaClaro
                             colors[apertou] = .black
                             apertou += 1
                         }
@@ -42,7 +46,7 @@ struct Pergunta3 : View {
                 {
                     
                     HStack{
-                        if botaoSim3 {
+                        if botao[2] == 1 {
                             Image(ImageResource.simBtVerde)
                             
                         } else {
@@ -52,11 +56,15 @@ struct Pergunta3 : View {
                 }
                 
                 Button (action: {
-                    botaoNao3 = !botaoNao3
+                    if (botao[2] != 2) {
+                        botao[2] = 2
+                    } else {
+                        botao[2] = 0
+                    }
                     
                     withAnimation{
                         if apertou <= 8 {
-                            colors[apertou-1] = .gray
+                            colors[apertou-1] = .cinzaClaro
                             colors[apertou] = .black
                             apertou += 1
                         }
@@ -66,7 +74,7 @@ struct Pergunta3 : View {
                 }) {
                     
                     HStack{
-                        if botaoNao3 {
+                        if botao[2] == 2 {
                             Image(ImageResource.naoBtVerde)
                         } else {
                             Image(ImageResource.naoBt)
@@ -81,9 +89,10 @@ struct Pergunta3 : View {
                 
                 withAnimation{
                     if apertou > 1 && apertou <= 8 {
-                        colors[apertou-1] = .gray
+                        colors[apertou-1] = .cinzaClaro
                         colors[apertou-2] = .black
                         apertou -= 1
+                        botao[1] = 0
                     }
                 }
             }, label: {
@@ -107,7 +116,7 @@ struct Pergunta3 : View {
     }
 }
 #Preview {
-    Pergunta3(apertou: .constant(1), colors: .constant([.black, .gray, .gray, .gray, .gray, .gray, .gray, .gray, .gray]))
+    Pergunta3(apertou: .constant(1), botao: .constant([0,0,0,0,0,0,0,0]), colors: .constant([.black, .cinzaClaro, .cinzaClaro, .cinzaClaro, .cinzaClaro, .cinzaClaro, .cinzaClaro, .cinzaClaro, .cinzaClaro]))
 }
 
 
