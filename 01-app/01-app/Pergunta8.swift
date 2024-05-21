@@ -13,6 +13,8 @@ struct Pergunta8 : View {
     
     @Binding var colors: [Color]
     
+    @Binding var resultado: Double
+    
     var body: some View {
         
         VStack {
@@ -25,15 +27,17 @@ struct Pergunta8 : View {
                 .padding(.trailing, 32.0)
                 .padding(.bottom, 20.0)
                 .padding(.top, 72)
-
+            
             HStack {
                 
-                Button (action: {
+                Button (action: {  //SIM
                     if (botao[7] != 1) {
                         botao[7] = 1
                     } else {
                         botao[7] = 0
                     }
+                    
+                    pontuar()
                     
                     withAnimation{
                         if apertou <= 8 {
@@ -42,6 +46,10 @@ struct Pergunta8 : View {
                             apertou += 1
                         }
                     }
+                    
+                    //lógica de pontuação
+                    
+                    
                     
                 }) {
                     
@@ -55,12 +63,14 @@ struct Pergunta8 : View {
                     }
                 }
                 
-                Button (action: {
+                Button (action: {  //NAO
                     if (botao[7] != 2) {
                         botao[7] = 2
                     } else {
                         botao[7] = 0
                     }
+                    
+                    pontuar()
                     
                     withAnimation{
                         if apertou <= 8 {
@@ -108,14 +118,65 @@ struct Pergunta8 : View {
                 .padding(.bottom, 48)
             
             //Image(ImageResource.pageControl1)
-              //  .padding(.bottom, 48)
+            //  .padding(.bottom, 48)
             
         }.ignoresSafeArea()
-            //.frame(width: 345, height: 562)
-            
+        //.frame(width: 345, height: 562)
         
+        
+    }
+    
+    func pontuar() {
+        
+        
+        if botao[0] == 1 {
+            resultado += 1.5
+        } else {
+            resultado += 12.5
+        }
+        
+        if botao[1] == 1 {
+            resultado += 12.5
+        } else {
+            resultado += 1.5
+        }
+        
+        if botao[2] == 1 {
+            resultado += 1.5
+        } else {
+            resultado += 12.5
+        }
+        
+        if botao[3] == 1 {
+            resultado += 12.5
+        } else {
+            resultado += 3.5
+        }
+        
+        if botao[4] == 1 {
+            resultado += 1.5
+        } else if botao[4] == 2 {
+            resultado += 6.5
+        } else {
+            resultado += 12.5
+        }
+        
+        if botao[5] == 1 {
+            resultado += 12.5
+        } else {
+            resultado += 0.5
+        }
+        
+        if botao[6] == 2 {
+            resultado += 12.5
+        }
+        
+        if botao[7] == 1 {
+            resultado += 12.5
+            
+        }
     }
 }
 #Preview {
-    Pergunta8(apertou: .constant(1), botao: .constant([0,0,0,0,0,0,0,0]), colors: .constant([.black, .cinzaClaro, .cinzaClaro, .cinzaClaro, .cinzaClaro, .cinzaClaro, .cinzaClaro, .cinzaClaro, .cinzaClaro]))
+    Pergunta8(apertou: .constant(1), botao: .constant([0,0,0,0,0,0,0,0]), colors: .constant([.black, .cinzaClaro, .cinzaClaro, .cinzaClaro, .cinzaClaro, .cinzaClaro, .cinzaClaro, .cinzaClaro, .cinzaClaro]), resultado: .constant(0.0))
 }

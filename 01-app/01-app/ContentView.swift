@@ -13,8 +13,6 @@ struct ContentView: View {
     
     @State var screen: Int = 0
     
-    @State var resultCent: Double = 0 //variável para cálculo
-    
     @State var isActive: Bool = false
     @State var isActive2: Bool = false
     @State var isActive3: Bool = false
@@ -39,6 +37,8 @@ struct ContentView: View {
     @State var botoes: [Int] = [0,0,0,0,0,0,0,0]
     // [1,1,1,2,2,1,2]
     
+    @State var resultado: Double = 0.0
+    
     let limitAlert = "O preço do produto não pode ser maior do quanto você tem disponível para gastar!"
     @State var limitInput = false
     
@@ -58,27 +58,52 @@ struct ContentView: View {
                     
                     
                     ZStack {
-                        Image(ImageResource.pig).offset(y:-106)
-                        ZStack(alignment: .bottom){
-                            Rectangle()
-                                .foregroundColor(.verdeEscuro)
-                                .cornerRadius(24)
-                                .frame(width: 130, height: 57)
-                            Text("caixa")
-                                .font(.display)
-                                .foregroundStyle(.white)
-                                .padding(.bottom, 5)
-                        }.offset(y:-28)
                         
-                        ZStack(alignment: .leading) {
-                            Image(ImageResource.retanguloCaixa)
-                            Text(currencyManagerBR.string)
-                                .foregroundColor(.verdeEscuro)
-                                .font(.system(size: 24))
-                                .padding(.leading, 28)
+                        if screen < 10 {
+                            Image(ImageResource.pig).offset(y:-106)
+                            ZStack(alignment: .bottom){
+                                Rectangle()
+                                    .foregroundColor(.verdeEscuro)
+                                    .cornerRadius(24)
+                                    .frame(width: 130, height: 57)
+                                Text("caixa")
+                                    .font(.display)
+                                    .foregroundStyle(.white)
+                                    .padding(.bottom, 5)
+                            }.offset(y:-28)
                             
-                        }.offset(y: -50)
+                            ZStack(alignment: .leading) {
+                                Image(ImageResource.retanguloCaixa)
+                                Text(currencyManagerBR.string)
+                                    .foregroundColor(.verdeEscuro)
+                                    .font(.system(size: 24))
+                                    .padding(.leading, 28)
+                                
+                            }.offset(y: -50)
+                        } else {
+                            ZStack(alignment: .bottom){
+                                Rectangle()
+                                    .foregroundColor(.verdeEscuro)
+                                    .cornerRadius(24)
+                                    .frame(width: 130, height: 57)
+                                Text("caixa")
+                                    .font(.display)
+                                    .foregroundStyle(.white)
+                                    .padding(.bottom, 5)
+                            }.offset(y:-28)
+                            
+                            ZStack(alignment: .leading) {
+                                Image(ImageResource.retanguloCaixa)
+                                Text((caixa-preco).string)
+                                    .foregroundColor(.verdeEscuro)
+                                    .font(.system(size: 24))
+                                    .padding(.leading, 28)
+                                
+                            }.offset(y: -50)
+                        }
                     }
+                    
+                    
                     Spacer()
                     
                     switch screen {
@@ -212,10 +237,10 @@ struct ContentView: View {
                         Pergunta7(apertou: $screen, botao: $botoes, colors: $colors)
                         
                     case 8:
-                        Pergunta8(apertou: $screen, botao: $botoes, colors: $colors)
+                        Pergunta8(apertou: $screen, botao: $botoes, colors: $colors, resultado: $resultado)
                         
                     case 9:
-                        Result(apertou: $screen, isActive3: $isActive3)
+                        Result(apertou: $screen, isActive3: $isActive3, resultado: $resultado)
                         //                        Text("\(botoes[0])")
                         //                        Text("\(botoes[1])")
                         //                        Text("\(botoes[2])")

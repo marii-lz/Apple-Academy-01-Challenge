@@ -13,7 +13,11 @@ struct Result : View {
     @State var aprovar = false
     @State var refazer = false
     
+  
+    
     @Binding var isActive3: Bool
+    
+    @Binding var resultado: Double
     
     var body: some View {
         
@@ -35,7 +39,7 @@ struct Result : View {
                 .padding(.bottom, 1)
                
             
-            Text("0,00%")
+            Text((String(format: "%.2f", resultado)+"%"))
                 .multilineTextAlignment(.center)
                 .foregroundStyle(.pretoAzul)
                 .bold()
@@ -81,5 +85,5 @@ struct Result : View {
     }
 }
 #Preview {
-    Result(apertou: .constant(1), isActive3: .constant(true))
+    Result(apertou: .constant(1), isActive3: .constant(true), resultado: .constant(0.0))
 }
