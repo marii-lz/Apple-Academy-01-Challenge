@@ -46,7 +46,7 @@ struct CustomDialogAprova: View {
                         .padding(.bottom, 8)
                         .frame(maxWidth: .infinity)
                     
-                    Text("- R$" + String(format: " %.2f", preco))
+                    Text("- R$" + String(format: "%.2f", preco))
                         .bold()
                         .foregroundStyle(.pretoAzul)
                         .padding(.bottom, 8)
@@ -63,6 +63,7 @@ struct CustomDialogAprova: View {
                             apertou = 12
                         }
 
+                        close()
                         
                     }
                     , label: {

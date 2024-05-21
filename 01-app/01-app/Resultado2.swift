@@ -27,7 +27,7 @@ struct Resultado2 : View {
                 .padding(.leading, 48.0)
                 .padding(.trailing, 48.0)
                 .padding(.bottom, 20.0)
-                .padding(.top, 48)
+              //  .padding(.top, 48)
             
             Button (action: {
                 apertou = 0

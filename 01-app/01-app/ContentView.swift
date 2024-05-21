@@ -26,6 +26,10 @@ struct ContentView: View {
     @State var caixa: Double = 0
     @State var preco: Double = 0
     
+    var saldo: Double {
+        return caixa - preco
+    }
+    
     @State var botoes: [Int] = [0,0,0,0,0,0,0,0]
     
     @State var resultado: Double = 0.0
@@ -73,10 +77,24 @@ struct ContentView: View {
                             }.offset(y: -50)
                         } else {
                             ZStack(alignment: .bottom){
-                                Rectangle()
-                                    .foregroundColor(.verdeEscuro)
-                                    .cornerRadius(24)
-                                    .frame(width: 130, height: 57)
+                                
+                                if screen == 10 {
+                                    Rectangle()
+                                        .foregroundColor(.caixaVermelho)
+                                        .cornerRadius(24)
+                                        .frame(width: 130, height: 57)
+                                } else if screen == 11 {
+                                    Rectangle()
+                                        .foregroundColor(.caixaLaranja)
+                                        .cornerRadius(24)
+                                        .frame(width: 130, height: 57)
+                                } else if screen == 12 {
+                                    Rectangle()
+                                        .foregroundColor(.caixaVerde)
+                                        .cornerRadius(24)
+                                        .frame(width: 130, height: 57)
+                                }
+                                
                                 Text("caixa")
                                     .font(.display)
                                     .foregroundStyle(.white)
@@ -85,7 +103,7 @@ struct ContentView: View {
                             
                             ZStack(alignment: .leading) {
                                 Image(ImageResource.retanguloCaixa)
-                                Text((caixa-preco).string)
+                                Text(String(saldo))
                                     .foregroundColor(.verdeEscuro)
                                     .font(.system(size: 24))
                                     .padding(.leading, 28)
@@ -209,6 +227,7 @@ struct ContentView: View {
                         }
                     case 1:
                         Pergunta1(apertou: $screen, botao: $botoes, colors: $colors)
+                        
                     case 2:
                         Pergunta2(apertou: $screen, botao: $botoes, colors: $colors)
                         
@@ -249,15 +268,6 @@ struct ContentView: View {
                         Resultado3(apertou: $screen, tocouRefazer:{
                             clear()
                         })
-                    
-                        //                        Text("\(botoes[0])")
-                        //                        Text("\(botoes[1])")
-                        //                        Text("\(botoes[2])")
-                        //                        Text("\(botoes[3])")
-                        //                        Text("\(botoes[4])")
-                        //                        Text("\(botoes[5])")
-                        //                        Text("\(botoes[6])")
-                        //                        Text("\(botoes[7])")
                         
                     default:
                         Text("teste")
