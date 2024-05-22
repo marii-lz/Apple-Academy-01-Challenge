@@ -23,12 +23,11 @@ struct Resultado1 : View {
             Text("Pouxa! Essa compra não valia a pena, mais atenção na próxima vez")
                 .multilineTextAlignment(.center)
                 .foregroundStyle(.verdeEscuro)
-                .font(.system(size: 18))
-                .bold()
-                .padding(.leading, 32.0)
-                .padding(.trailing, 32.0)
-                .padding(.bottom, 20.0)
-                .padding(.top, 48)
+                .font(.semibold1)
+                .padding(.leading, 42.0)
+                .padding(.trailing, 42.0)
+                .padding(.bottom, 48.0)
+                .padding(.top, 20)
             
             Button (action: {
                 apertou = 0
@@ -44,7 +43,9 @@ struct Resultado1 : View {
                 }
             })
             
-        }
+            Spacer()
+            
+        }.ignoresSafeArea()
     }
 }
 #Preview{

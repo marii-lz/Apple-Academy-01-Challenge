@@ -39,7 +39,7 @@ struct CustomDialogAprova: View {
                     Text(message)
                         .multilineTextAlignment(.center)
                         .foregroundStyle(.pretoAzul)
-                        .font(.system(size: 14))
+                        .font(.regular3)
                         .padding(.leading, 20.0)
                         .padding(.trailing, 20.0)
                         .padding(.top, 16)
@@ -47,7 +47,7 @@ struct CustomDialogAprova: View {
                         .frame(maxWidth: .infinity)
                     
                     Text("- R$" + String(format: "%.2f", preco))
-                        .bold()
+                        .font(.bold2)
                         .foregroundStyle(.pretoAzul)
                         .padding(.bottom, 8)
                     
@@ -125,6 +125,6 @@ struct CustomDialogAprova: View {
 }
 
 #Preview {
-    CustomDialogAprova(apertou: .constant(1), preco: .constant(0.0), caixa: .constant(0.0), isActive3: .constant(true), resultado: .constant(0.0), message: "Ao aprovar a compra, serão descontados do seu caixa:")
+    CustomDialogAprova(apertou: .constant(1), preco: .constant(1), caixa: .constant(1.0), isActive3: .constant(true), resultado: .constant(0.0), message: "Ao aprovar a compra, serão descontados do seu caixa:")
 }
 

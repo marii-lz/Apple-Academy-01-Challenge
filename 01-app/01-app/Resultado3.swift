@@ -23,12 +23,11 @@ struct Resultado3 : View {
             Text("Parabéns! Você sabe mesmo economizar!")
                 .multilineTextAlignment(.center)
                 .foregroundStyle(.verdeEscuro)
-                .font(.system(size: 18))
-                .bold()
-                .padding(.leading, 48.0)
-                .padding(.trailing, 48.0)
-                .padding(.bottom, 20.0)
-                .padding(.top, 48)
+                .font(.semibold1)
+                .padding(.leading, 42.0)
+                .padding(.trailing, 42.0)
+                .padding(.bottom, 48.0)
+                .padding(.top, 20)
             
             Button (action: {
                 apertou = 0
@@ -44,7 +43,9 @@ struct Resultado3 : View {
                 }
             })
             
-        }
+            Spacer()
+            
+        }.ignoresSafeArea()
     }
 }
 #Preview{

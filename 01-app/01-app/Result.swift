@@ -27,7 +27,7 @@ struct Result : View {
             Text("A sua compra tem")
                 .multilineTextAlignment(.center)
                 .foregroundStyle(.pretoAzul)
-                .font(.system(size: 20))
+                .font(.regular4)
                 .padding(.leading, 32.0)
                 .padding(.trailing, 32.0)
                 .padding(.top, 48)
@@ -35,7 +35,7 @@ struct Result : View {
             Text("um custo-benefício de:")
                 .multilineTextAlignment(.center)
                 .foregroundStyle(.pretoAzul)
-                .font(.system(size: 20))
+                .font(.regular4)
                 .padding(.leading, 32.0)
                 .padding(.trailing, 32.0)
                 .padding(.bottom, 1)
@@ -44,8 +44,7 @@ struct Result : View {
             Text((String(format: "%.1f", resultado)+"%"))
                 .multilineTextAlignment(.center)
                 .foregroundStyle(.pretoAzul)
-                .bold()
-                .font(.system(size: 92))
+                .font(.semibold3)
                 .padding(.bottom, 88.0)
 
             HStack {

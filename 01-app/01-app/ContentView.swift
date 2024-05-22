@@ -25,11 +25,7 @@ struct ContentView: View {
     
     @State var caixa: Double = 0
     @State var preco: Double = 0
-    
-    var saldo: Double {
-        return caixa - preco
-    }
-    
+
     @State var botoes: [Int] = [0,0,0,0,0,0,0,0]
     
     @State var resultado: Double = 0.0
@@ -62,7 +58,7 @@ struct ContentView: View {
                                     .cornerRadius(24)
                                     .frame(width: 130, height: 57)
                                 Text("caixa")
-                                    .font(.display)
+                                    .font(.semibold1)
                                     .foregroundStyle(.white)
                                     .padding(.bottom, 5)
                             }.offset(y:-28)
@@ -71,7 +67,7 @@ struct ContentView: View {
                                 Image(ImageResource.retanguloCaixa)
                                 Text(currencyManagerBR.string)
                                     .foregroundColor(.verdeEscuro)
-                                    .font(.system(size: 24))
+                                    .font(.regular1)
                                     .padding(.leading, 28)
                                 
                             }.offset(y: -50)
@@ -96,16 +92,17 @@ struct ContentView: View {
                                 }
                                 
                                 Text("caixa")
-                                    .font(.display)
+                                    .font(.semibold1)
                                     .foregroundStyle(.white)
                                     .padding(.bottom, 5)
                             }.offset(y:-28)
                             
                             ZStack(alignment: .leading) {
                                 Image(ImageResource.retanguloCaixa)
-                                Text(String(saldo))
+                                //("- R$" + String(format: "%.2f", preco))
+                                Text("R$ " + String(format: "%.2f", caixa-preco))
                                     .foregroundColor(.verdeEscuro)
-                                    .font(.system(size: 24))
+                                    .font(.regular1)
                                     .padding(.leading, 28)
                                 
                             }.offset(y: -50)
@@ -119,11 +116,11 @@ struct ContentView: View {
                     case 0:
                         VStack(alignment: .center) {
                             Text("Quanto você tem disponível para gastar?")
-                                .font(.system(size: 20))
+                                .font(.medium1)
                                 .foregroundColor(.verdeEscuro)
                                 .multilineTextAlignment(.center)
                                 .padding(.leading, 48.0).padding(.trailing, 48.0)
-                                .bold()
+                                
                             
                             HStack(alignment: .center) {
                                 TextField(currencyManagerBR.string, text: $currencyManagerBR.string)
@@ -137,7 +134,7 @@ struct ContentView: View {
                                 
                                     .keyboardType(
                                         .numberPad)
-                                    .font(.system(size: 24))
+                                    .font(.regular1)
                                     .foregroundColor(.verdeTranslucido)
                                     .padding(.leading, 72.0)
                                 
@@ -153,11 +150,10 @@ struct ContentView: View {
                             Spacer()
                             
                             Text("Quanto custa o produto que você quer comprar?")
-                                .font(.system(size: 20))
+                                .font(.medium1)
                                 .foregroundColor(.verdeEscuro)
                                 .multilineTextAlignment(.center)
-                                .padding(.leading, 64.0).padding(.trailing, 64.0)
-                                .bold()
+                                .padding(.leading, 56.0).padding(.trailing, 56.0)
                             
                             HStack(alignment: .center) {
                                 TextField(currencyManagerBR2.string, text: $currencyManagerBR2.string)
@@ -171,7 +167,7 @@ struct ContentView: View {
                                 
                                     .keyboardType(
                                         .numberPad)
-                                    .font(.system(size: 24))
+                                    .font(.regular1)
                                     .foregroundColor(.verdeTranslucido)
                                     .padding(.leading, 72.0)
                                 
@@ -197,6 +193,10 @@ struct ContentView: View {
                                     return
                                 }
                                 
+                                // antes a variável era apenas uma propriedade, dentro do botão
+                                self.caixa = caixa
+                                self.preco = preco
+                                
                                 guard caixa - preco >= 0 else {
                                     limitInput = true
                                     return
@@ -204,12 +204,12 @@ struct ContentView: View {
                                 
                                 screen = 1
                                 
-                                
                             }, label: {
                                 ZStack{
                                     RoundedRectangle(cornerRadius: 24).foregroundColor(Color.verdeClaro).frame(width: 160, height: 40)
                                     Text("COMEÇAR")
                                         .foregroundColor(Color.white)
+                                        .font(.semibold2)
                                         .bold()
                                 }
                                 
