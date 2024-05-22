@@ -38,6 +38,11 @@ class CurrencyManager: ObservableObject {
         self.maximum = maximum
     }
     
+    func reset(with amount: Decimal = 0) {
+        self.string = formatter.string(for: amount) ?? "$0.00"
+        self.lastValue = string
+    }
+    
     func valueChanged(_ value: String) {
         let newValue = (value.decimal ?? .zero) / pow(10, formatter.maximumFractionDigits)
         if newValue > maximum {

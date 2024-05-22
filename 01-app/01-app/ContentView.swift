@@ -256,17 +256,17 @@ struct ContentView: View {
                         
                     case 10:
                         Resultado1(apertou: $screen, tocouRefazer:{
-                            clear()
+                            clearNotAll()
                         })
                         
                     case 11:
                         Resultado2(apertou: $screen, tocouRefazer:{
-                            clear()
+                            clearNotAll()
                         })
                         
                     case 12:
                         Resultado3(apertou: $screen, tocouRefazer:{
-                            clear()
+                            clearNotAll()
                         })
                         
                     default:
@@ -285,12 +285,22 @@ struct ContentView: View {
     }
     
     func clear() {
-        currencyManagerBR.string = "$0.00"
-        currencyManagerBR2.string = "$0.00"
+        currencyManagerBR.reset()
+        currencyManagerBR2.reset()
         caixa = 0
         preco = 0
         resultado = 0
         botoes = [0,0,0,0,0,0,0,0]
+    }
+    
+    func clearNotAll() {
+        currencyManagerBR.reset(with: Decimal(caixa - preco))
+        currencyManagerBR2.reset()
+        caixa = caixa-preco
+        preco = 0
+        resultado = 0
+        botoes = [0,0,0,0,0,0,0,0]
+        zeroInput = false
     }
     
 }
