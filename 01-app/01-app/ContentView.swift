@@ -108,7 +108,9 @@ struct ContentView: View {
                             }.offset(y: -50)
                         }
                     }
-                    
+//                    .onTapGesture {
+//                        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+//                    }
                     
                     Spacer()
                     
@@ -120,13 +122,12 @@ struct ContentView: View {
                                 .foregroundColor(.verdeEscuro)
                                 .multilineTextAlignment(.center)
                                 .padding(.leading, 48.0).padding(.trailing, 48.0)
-                                
+                            
                             
                             HStack(alignment: .center) {
                                 TextField(currencyManagerBR.string, text: $currencyManagerBR.string)
                                     .keyboardType(.numberPad)
                                     .onChange(of: currencyManagerBR.string, perform: currencyManagerBR.valueChanged)
-                                
                                     .padding(.vertical, 12)
                                     .padding(.leading, 12)
                                     .background(Color.verdeBranco)
@@ -156,10 +157,10 @@ struct ContentView: View {
                                 .padding(.leading, 56.0).padding(.trailing, 56.0)
                             
                             HStack(alignment: .center) {
+                                
                                 TextField(currencyManagerBR2.string, text: $currencyManagerBR2.string)
                                     .keyboardType(.numberPad)
                                     .onChange(of: currencyManagerBR2.string, perform: currencyManagerBR2.valueChanged)
-                                
                                     .padding(.vertical, 12)
                                     .padding(.leading, 12)
                                     .background(Color.verdeBranco)
@@ -276,13 +277,15 @@ struct ContentView: View {
                     
                 }
             }
-            CustomDialog(isActive: $isActive, title: "Quanto você vai guardar no porquinho?", message: "Para usar esse aplicativo, é preciso calcular previamente o valor que você tem disponível para gastar, no momento.",message2: "Então lembre-se de descontar os gastos fixos (água, luz, impostos, etc.), qualquer possível dívida (esperamos que nenhuma) e separe aquela parte investir (sugerimos pelo menos 25%) da sua renda. Daí agora sim, tá na hora de usar o app.")
+            CustomDialog(isActive: $isActive, title: "Quanto você vai guardar no porquinho?", message: "Para usar esse aplicativo, é preciso calcular previamente o valor que você tem disponível para gastar, no momento.",message2: "Então lembre-se de descontar os gastos fixos (água, luz, impostos, etc.), qualquer possível dívida (esperamos que nenhuma) e separe aquela parte para investir (sugerimos pelo menos 25%) da sua renda. Daí agora sim, tá na hora de usar o app.")
             
             CustomDialogCusto(isActive2: $isActive2, title: "Já procurou o melhor preço né?", message: "Antes de inserir o preço do produto que você deseja comprar, recomendamos fazer uma pesquisa antes, para garantir que está no melhor preço disponível.",message2: "Confira se existem opções mais em conta ou se há algum desconto. Depois disso, é só digitar o valor aqui.")
             
             CustomDialogAprova(apertou: $screen, preco: $preco, caixa: $caixa, isActive3: $isActive3, resultado: $resultado, message: "Ao aprovar a compra, serão descontados do seu caixa:")
         }
+        
     }
+        
     
     func clear() {
         currencyManagerBR.reset()

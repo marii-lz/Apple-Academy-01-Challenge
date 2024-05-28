@@ -23,8 +23,8 @@ struct Resultado2 : View {
                 .multilineTextAlignment(.center)
                 .foregroundStyle(.verdeEscuro)
                 .font(.semibold1)
-                .padding(.leading, 42.0)
-                .padding(.trailing, 42.0)
+                .padding(.leading, 48.0)
+                .padding(.trailing, 48.0)
                 .padding(.bottom, 48.0)
                 .padding(.top, 20)
             
